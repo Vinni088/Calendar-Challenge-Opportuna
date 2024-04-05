@@ -10,7 +10,7 @@ function SelectedDayDisplay() {
   return (
     <>
       <button className="CurrentSelectedDay">
-        {date.diaNumero} de {date.mesExtenso} de {date.anoAtual}
+        {date.day} de {date.monthFull} de {date.year}
       </button>
     </>
   );

@@ -12,22 +12,26 @@ export function getInfoData(dataEspecifica?: Date) {
 
   const diasNoMesSeguinte = new Date(anoAtual, mesAtual + 2, 0).getDate();
 
-  const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  const primeiroDiaMes = new Date(anoAtual, mesAtual, 1).getDay();
+
   const meses= ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-  
-  const nomeDiaDaSemana = diasDaSemana[diaDaSemana];
+  const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const nomeDiaDaSemana = weekDays[diaDaSemana];
   const nomeMes = meses[mesAtual]
 
   return {
-    diaNumero: diaAtual,
-    diaHojeSemana: nomeDiaDaSemana,
-    mesNumero: mesAtual + 1,
-    mesExtenso: nomeMes,
-    anoAtual,
-    horaAtual,
-    quantidadeDiasMesAtual: diasNoMesAtual,
-    quantidadeDiasMesAnterior: diasNoMesAnterior,
-    quantidadeDiasMesSeguinte: diasNoMesSeguinte,
+    day: diaAtual,
+    dayFull: nomeDiaDaSemana,
+    month: mesAtual + 1,
+    monthFull: nomeMes,
+    year: anoAtual,
+    currentTime:horaAtual,
+    weekDays,
+    firstMonthDay: primeiroDiaMes,
+    firstMonthDayFull: weekDays[primeiroDiaMes],
+    qtyDaysThisMonth: diasNoMesAtual,
+    qtyDaysPastMonth: diasNoMesAnterior,
+    qtyDaysNextMonth: diasNoMesSeguinte,
   };
 }
 
