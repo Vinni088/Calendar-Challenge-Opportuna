@@ -1,10 +1,16 @@
 import "./SelectedDayDisplay.css";
+import { useContext } from "react";
+import { CalendarContext } from "../../contexts/CalendarContext";
+import * as utils from "../../utils/dateInfo";
 
 function SelectedDayDisplay() {
+  let calendarContext = useContext(CalendarContext);
+  let date = utils.getInfoData(calendarContext.selectedDate.date);
+
   return (
     <>
       <button className="CurrentSelectedDay">
-        5 de Abril de 2024
+        {date.diaNumero} de {date.mesExtenso} de {date.anoAtual}
       </button>
     </>
   );

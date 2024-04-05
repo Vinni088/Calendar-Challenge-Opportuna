@@ -43,7 +43,13 @@ function WeatherWidget() {
           const currentDateData = data.list.filter((item) =>
             item.dt_txt.includes(currentDate)
           );
-          setWeather(currentDateData);
+
+          //Array in the case the forecast doesn't include the date
+          let correctionArr = [data.list[0]];
+
+          currentDateData.length === 0
+            ? setWeather(correctionArr)
+            : setWeather(currentDateData);
         } else {
           const nextDaysData = data.list.filter((item) =>
             item.dt_txt.includes(reminder.date + " 12:00:00")
