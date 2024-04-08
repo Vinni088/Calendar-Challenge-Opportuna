@@ -22,53 +22,18 @@ export default function RemindersProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [reminders, setReminders] = useState<ReminderState[]>([
-    {
-      id: 1,
-      date: "2024-04-04",
-      time: "09:00",
-      title: "Exercício",
-      description: "Fazer exercícios físicos",
-      city: "São Paulo",
-      color: "blue",
-    },
-    {
-      id: 2,
-      date: "2024-04-05",
-      time: "15:30",
-      title: "Reunião",
-      description: "Reunião de equipe",
-      city: "Rio de Janeiro",
-      color: "green",
-    },
-    {
-      id: 3,
-      date: "2024-04-06",
-      time: "18:00",
-      title: "Compras",
-      description: "Comprar mantimentos",
-      city: "Belo Horizonte",
-      color: "orange",
-    },
-    {
-      id: 4,
-      date: "2024-04-07",
-      time: "10:00",
-      title: "Dentista",
-      description: "Consulta com o dentista",
-      city: "Porto Alegre",
-      color: "red",
-    },
-    {
-      id: 5,
-      date: "2024-04-08",
-      time: "14:00",
-      title: "Aniversário",
-      description: "Festa de aniversário",
-      city: "Curitiba",
-      color: "pink",
-    },
-  ]);
+  const [reminders, setReminders] = useState<ReminderState[]>([]);
+
+  let requestOptions: RequestInit = {
+    method: "GET",
+  };
+
+  fetch("https://calendar-challenge-api.onrender.com/reminder", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      setReminders(result);
+    })
+    .catch((error) => console.error(error));
 
   reminders.sort((a, b) => {
     if (a.time < b.time) {
