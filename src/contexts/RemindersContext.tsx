@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useEffect } from "react";
 
 export interface ReminderState {
   id: number;
@@ -24,16 +25,21 @@ export default function RemindersProvider({
 }) {
   const [reminders, setReminders] = useState<ReminderState[]>([]);
 
-  let requestOptions: RequestInit = {
-    method: "GET",
-  };
+  useEffect(() => {
+    let requestOptions: RequestInit = {
+      method: "GET",
+    };
 
-  fetch("https://calendar-challenge-api.onrender.com/reminder", requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      setReminders(result);
-    })
-    .catch((error) => console.error(error));
+    fetch(
+      "https://calendar-challenge-api.onrender.com/reminder",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setReminders(result);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   reminders.sort((a, b) => {
     if (a.time < b.time) {

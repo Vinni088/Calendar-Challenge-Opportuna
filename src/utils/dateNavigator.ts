@@ -5,7 +5,9 @@ export function dateNavigator(day: number, month: number, year: number) {
 
     let yearString = String(year);
 
-    let newDate = new Date(`${yearString}-${monthString}-${dayString}`);
+    let newDate = new Date(`${yearString}-${monthString}-${dayString}T15:00:00Z`);
+
+    console.log(newDate);
 
     return newDate
 }

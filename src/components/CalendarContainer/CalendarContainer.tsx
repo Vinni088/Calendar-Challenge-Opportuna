@@ -25,6 +25,8 @@ function Calendar() {
     (_, i) => i + 1
   );
 
+  //console.log("calendar page is being rendered")
+
   return (
     <>
       <div className="CalendarApp">
@@ -44,19 +46,17 @@ function Calendar() {
             -1
           );
 
-          let thisDate = {
-            date: utils.dateNavigator(
-              prevMonthDay+1,
-              dateInfo.month - 1,
-              dateInfo.year
-            ),
-          };
-
           return (
             <button
               className="PrevMonth"
               key={prevMonthDay}
-              onClick={() => setCalendarDate(thisDate)}
+              onClick={() => setCalendarDate({
+                date: utils.dateNavigator(
+                  prevMonthDay,
+                  dateInfo.month - 1,
+                  dateInfo.year
+                ),
+              })}
             >
               {prevMonthDay}
 
@@ -73,19 +73,19 @@ function Calendar() {
             0
           );
 
-          let thisDate = {
-            date: utils.dateNavigator(
-              currentDayDate+1,
-              dateInfo.month,
-              dateInfo.year
-            ),
-          };
-
           return (
             <button
               className={"MonthlyDay"}
               key={currentDayDate}
-              onClick={() => setCalendarDate(thisDate)}
+              onClick={() =>
+                setCalendarDate({
+                  date: utils.dateNavigator(
+                    currentDayDate,
+                    dateInfo.month,
+                    dateInfo.year
+                  ),
+                })
+              }
             >
               {currentDayDate}
 
@@ -102,19 +102,19 @@ function Calendar() {
             +1
           );
 
-          let thisDate = {
-            date: utils.dateNavigator(
-              nextMonthDay+1,
-              dateInfo.month + 1,
-              dateInfo.year
-            ),
-          };
-
           return (
             <button
               className="NextMonth"
               key={nextMonthDay}
-              onClick={() => setCalendarDate(thisDate)}
+              onClick={() =>
+                setCalendarDate({
+                  date: utils.dateNavigator(
+                    nextMonthDay,
+                    dateInfo.month + 1,
+                    dateInfo.year
+                  ),
+                })
+              }
             >
               {nextMonthDay}
 
