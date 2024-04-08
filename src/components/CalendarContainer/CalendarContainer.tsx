@@ -8,6 +8,8 @@ function Calendar() {
   let remindersContext = useContext(RemindersContext);
   let calendarContext = useContext(CalendarContext);
 
+  let setCalendarDate = calendarContext.setSelectedDate;
+
   let reminders = remindersContext.reminders;
   let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
@@ -38,13 +40,26 @@ function Calendar() {
           const hasReminder = utils.filterRemindersByDay(
             reminders,
             prevMonthDay,
-            dateInfo
+            dateInfo,
+            -1
           );
 
+          let thisDate = {
+            date: utils.dateNavigator(
+              prevMonthDay+1,
+              dateInfo.month - 1,
+              dateInfo.year
+            ),
+          };
+
           return (
-            <button className="PrevMonth" key={prevMonthDay}>
+            <button
+              className="PrevMonth"
+              key={prevMonthDay}
+              onClick={() => setCalendarDate(thisDate)}
+            >
               {prevMonthDay}
-              
+
               <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
             </button>
           );
@@ -54,11 +69,24 @@ function Calendar() {
           const hasReminder = utils.filterRemindersByDay(
             reminders,
             currentDayDate,
-            dateInfo
+            dateInfo,
+            0
           );
 
+          let thisDate = {
+            date: utils.dateNavigator(
+              currentDayDate+1,
+              dateInfo.month,
+              dateInfo.year
+            ),
+          };
+
           return (
-            <button className={"MonthlyDay"} key={currentDayDate}>
+            <button
+              className={"MonthlyDay"}
+              key={currentDayDate}
+              onClick={() => setCalendarDate(thisDate)}
+            >
               {currentDayDate}
 
               <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
@@ -70,11 +98,24 @@ function Calendar() {
           const hasReminder = utils.filterRemindersByDay(
             reminders,
             nextMonthDay,
-            dateInfo
+            dateInfo,
+            +1
           );
 
+          let thisDate = {
+            date: utils.dateNavigator(
+              nextMonthDay+1,
+              dateInfo.month + 1,
+              dateInfo.year
+            ),
+          };
+
           return (
-            <button className="NextMonth" key={nextMonthDay}>
+            <button
+              className="NextMonth"
+              key={nextMonthDay}
+              onClick={() => setCalendarDate(thisDate)}
+            >
               {nextMonthDay}
 
               <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
