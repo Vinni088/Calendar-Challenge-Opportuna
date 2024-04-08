@@ -14,9 +14,10 @@ export function getInfoData(dataEspecifica?: Date) {
 
   const primeiroDiaMes = new Date(anoAtual, mesAtual, 1).getDay();
 
-  const meses= ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const meses = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const nomeDiaDaSemana = weekDays[diaDaSemana];
+  const weekDaysFull = ["Sunday", "Monday", "Tuesday", "wednesday", "Thursday", "Friday", "Saturday"];
+  const nomeDiaDaSemana = weekDaysFull[diaDaSemana];
   const nomeMes = meses[mesAtual]
 
   return {
@@ -27,6 +28,7 @@ export function getInfoData(dataEspecifica?: Date) {
     year: anoAtual,
     currentTime:horaAtual,
     weekDays,
+    weekDaysFull,
     firstMonthDay: primeiroDiaMes,
     firstMonthDayFull: weekDays[primeiroDiaMes],
     qtyDaysThisMonth: diasNoMesAtual,

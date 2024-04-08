@@ -5,12 +5,12 @@ import * as utils from "../../utils/dateInfo";
 
 function SelectedDayDisplay() {
   let calendarContext = useContext(CalendarContext);
-  let date = utils.getInfoData(calendarContext.selectedDate.date);
+  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   return (
     <>
       <button className="CurrentSelectedDay">
-        {date.day} de {date.monthFull} de {date.year}
+        {dateInfo.dayFull}, {dateInfo.monthFull} {dateInfo.day}
       </button>
     </>
   );

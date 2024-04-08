@@ -1,10 +1,28 @@
 import "./CurrentMonthButton.css";
+import { useContext } from "react";
+import utils from "../../utils/index";
+import { CalendarContext } from "../../contexts/CalendarContext";
 
 // Go to current month
+
+
 function CurrentMonthButton() {
+  let calendarContext = useContext(CalendarContext);
+  let setCalendarDate = calendarContext.setSelectedDate;
+  let dateInfo = utils.getInfoData();
+
   return (
     <>
-      <button className="CurrentMonthButton">Current</button>
+      <button className="CurrentMonthButton"
+      onClick={() =>
+        setCalendarDate({
+          date: utils.dateNavigator(
+            dateInfo.day,
+            dateInfo.month,
+            dateInfo.year
+          ),
+        })
+      }>Current</button>
     </>
   );
 }
