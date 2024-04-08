@@ -1,5 +1,8 @@
 import "./WeatherWidget.css";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CalendarContext } from "../../contexts/CalendarContext";
+import utils from "../../utils/index";
 
 interface WeatherResponse {
   list: WeatherData[];
@@ -16,20 +19,40 @@ interface WeatherData {
   dt_txt: string;
 }
 
+interface ReminderState {
+  id: number;
+  date: string;
+  time: string;
+  title: string;
+  description: string;
+  city: string;
+  color: string;
+}
+
 const API_KEY = "2cddc023dd09005c1b277ed47e80342e";
 
-// Mock reminder
-const reminder = {
-  date: "2024-04-05",
-  city: "brasília",
-};
+function formatDate(dateInfo: any) {
+  let dayString = String(dateInfo.day).padStart(2, "0");
+  let monthString = String(dateInfo.month).padStart(2, "0");
+  let yearString = String(dateInfo.year);
 
-function WeatherWidget() {
+  let currentDate = `${yearString}-${monthString}-${dayString}`;
+
+  return currentDate;
+}
+
+
+const WeatherWidget = (props: { reminder: ReminderState }) => {
+  let calendarContext = useContext(CalendarContext);
   const [weather, setWeather] = useState<WeatherData[]>([]);
+  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
-  const currentDate = new Date().toISOString().split("T")[0];
+  const reminder = props.reminder;
+  let currentDate = formatDate(dateInfo);
 
   const intervalOfDays = [currentDate];
+
+  console.log(reminder);
 
   useEffect(() => {
     async function getWeather() {
@@ -64,7 +87,7 @@ function WeatherWidget() {
     if (currentDate <= reminder.date && intervalOfDays.length <= 6) {
       getWeather();
     }
-  }, []);
+  }, [ calendarContext.selectedDate ]);
 
   if (currentDate <= reminder.date) {
     if (intervalOfDays.length <= 6) {
@@ -99,6 +122,6 @@ function WeatherWidget() {
       </>
     );
   }
-}
+};
 
 export default WeatherWidget;
