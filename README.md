@@ -23,7 +23,7 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 ### Regras técnicas
 
 - [X] O CRUD de lembrete deve ser realizado em API (NODE.JS) a ser criada pelo candidato;
-- [x]As operações de CRUD dos lembretes devem ser realizadas em banco SQL e não devem ficar somente em estados da aplicação;
+- [X] As operações de CRUD dos lembretes devem ser realizadas em banco SQL e não devem ficar somente em estados da aplicação;
 
 ### Bônus
 
