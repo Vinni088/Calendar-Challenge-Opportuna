@@ -14,16 +14,16 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 
 ### Regras obrigatórias
 
-- [x] Poder adicionar lembretes (max 30 chars) incluindo (Dia, Horário e cidade e cor) exemplo ao clicar no botão de editar de algum lembrete já criado;
-- [x] Mostrar os lembretes na ordem correta;
-- [x] Permitir a navegação do calendário por outros meses;
-- [ ] Poder editar o lembrete com os dados de (Dia, Horário e cidade e cor);
+- [X] Poder adicionar lembretes (max 30 chars) incluindo (Dia, Horário e cidade e cor) exemplo ao clicar no botão de editar de algum lembrete já criado;
+- [X] Mostrar os lembretes na ordem correta (Dias corretos e horários corretos) ;
+- [X] Permitir a navegação do calendário por outros dias, meses, anos;
+- [X] Poder editar o lembrete com os dados de (Título, Descrição, Dia, Horário e cidade e cor);
 - [ ] Teste unitário da funcionalidade de criar novo lembrete e buscar informações de clima da data e horário dos lembretes com base na cidade;
 
 ### Regras técnicas
 
-- O CRUD de lembrete deve ser realizado em API (NODE.JS) a ser criada pelo candidato;
-- As operações de CRUD dos lembretes devem ser realizadas em banco SQL e não devem ficar somente em estados da aplicação;
+- [X] O CRUD de lembrete deve ser realizado em API (NODE.JS) a ser criada pelo candidato;
+- [x]As operações de CRUD dos lembretes devem ser realizadas em banco SQL e não devem ficar somente em estados da aplicação;
 
 ### Bônus
 

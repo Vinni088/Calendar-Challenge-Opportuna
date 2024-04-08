@@ -58,9 +58,9 @@ function Reminders() {
               >
                 {reminder.description}
               </div>
-              <ReminderEdit />
+              <ReminderEdit reminder={reminder}/>
               <WeatherWidget reminder={reminder} />
-              <ReminderDelete />
+              <ReminderDelete reminder={reminder}/>
             </li>
           );
         })}

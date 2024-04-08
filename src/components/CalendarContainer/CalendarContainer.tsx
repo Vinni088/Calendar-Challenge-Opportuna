@@ -25,8 +25,6 @@ function Calendar() {
     (_, i) => i + 1
   );
 
-  //console.log("calendar page is being rendered")
-
   return (
     <>
       <div className="CalendarApp">
@@ -50,17 +48,37 @@ function Calendar() {
             <button
               className="PrevMonth"
               key={prevMonthDay}
-              onClick={() => setCalendarDate({
-                date: utils.dateNavigator(
-                  prevMonthDay,
-                  dateInfo.month - 1,
-                  dateInfo.year
-                ),
-              })}
+              onClick={() =>
+                setCalendarDate({
+                  date: utils.dateNavigator(
+                    prevMonthDay,
+                    dateInfo.month - 1,
+                    dateInfo.year
+                  ),
+                })
+              }
             >
               {prevMonthDay}
 
-              <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
+              <div
+                className="DailyRemindersContainer"
+              >
+                {hasReminder.length > 0
+                  ? hasReminder.map((reminder, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="DailyReminders"
+                          style={{
+                            backgroundColor: reminder.color,
+                          }}
+                        >
+                          {reminder.title}
+                        </p>
+                      );
+                    })
+                  : undefined}
+              </div>
             </button>
           );
         })}
@@ -89,7 +107,25 @@ function Calendar() {
             >
               {currentDayDate}
 
-              <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
+              <div
+                className="DailyRemindersContainer"
+              >
+                {hasReminder.length > 0
+                  ? hasReminder.map((reminder, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="DailyReminders"
+                          style={{
+                            backgroundColor: reminder.color,
+                          }}
+                        >
+                          {reminder.title}
+                        </p>
+                      );
+                    })
+                  : undefined}
+              </div>
             </button>
           );
         })}
@@ -118,7 +154,25 @@ function Calendar() {
             >
               {nextMonthDay}
 
-              <p>{hasReminder.length > 0 ? hasReminder[0].title : undefined}</p>
+              <div
+                className="DailyRemindersContainer"
+              >
+                {hasReminder.length > 0
+                  ? hasReminder.map((reminder, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="DailyReminders"
+                          style={{
+                            backgroundColor: reminder.color,
+                          }}
+                        >
+                          {reminder.title}
+                        </p>
+                      );
+                    })
+                  : undefined}
+              </div>
             </button>
           );
         })}
