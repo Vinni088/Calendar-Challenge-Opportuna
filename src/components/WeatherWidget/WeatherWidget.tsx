@@ -52,7 +52,7 @@ const WeatherWidget = (props: { reminder: ReminderState }) => {
 
   const intervalOfDays = [currentDate];
 
-  console.log(reminder);
+  //console.log("WeatherWidget is being rendered");
 
   useEffect(() => {
     async function getWeather() {

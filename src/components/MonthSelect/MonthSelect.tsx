@@ -4,9 +4,9 @@ import utils from "../../utils/index";
 import { CalendarContext } from "../../contexts/CalendarContext";
 
 function MonthSelect() {
-  let calendarContext = useContext(CalendarContext);
-  let setCalendarDate = calendarContext.setSelectedDate;
-  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
+  const calendarContext = useContext(CalendarContext);
+  const setCalendarDate = calendarContext.setSelectedDate;
+  const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   return (
     <>
