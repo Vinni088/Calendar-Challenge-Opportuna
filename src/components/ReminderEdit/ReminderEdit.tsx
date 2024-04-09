@@ -1,5 +1,5 @@
 import { RemindersContext } from "../../contexts/RemindersContext";
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import swaal from "sweetalert2";
 import "./ReminderEdit.css";
 
@@ -14,7 +14,7 @@ interface ReminderState {
 }
 
 function ReminderEdit(props: { reminder: ReminderState }) {
-  let remindersContext = useContext(RemindersContext);
+  const remindersContext = useContext(RemindersContext);
 
   const [reminderEditPopUp, setReminderEditPopUp] = useState(false);
   const [description, setDescription] = useState(props.reminder.description);
@@ -24,7 +24,7 @@ function ReminderEdit(props: { reminder: ReminderState }) {
   const [time, setTime] = useState(props.reminder.time);
   const [date, setDate] = useState(props.reminder.date);
 
-  let reminderObject = {
+  const reminderObject = {
     title,
     description,
     city,
@@ -33,7 +33,7 @@ function ReminderEdit(props: { reminder: ReminderState }) {
     color: colorValue,
   };
 
-  async function handleSubmit(e: any) {
+  async function handleSubmit(e: React.MouseEvent) {
     e.preventDefault();
 
     console.log(reminderObject);
@@ -87,7 +87,7 @@ function ReminderEdit(props: { reminder: ReminderState }) {
       .then((result) => {
         console.log(result);
 
-        let requestOptions2: RequestInit = {
+        const requestOptions2: RequestInit = {
           method: "GET",
         };
 

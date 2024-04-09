@@ -4,8 +4,8 @@ import { CalendarContext } from "../../contexts/CalendarContext";
 import * as utils from "../../utils/dateInfo";
 
 function SelectedDayDisplay() {
-  let calendarContext = useContext(CalendarContext);
-  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
+  const calendarContext = useContext(CalendarContext);
+  const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   return (
     <>

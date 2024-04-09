@@ -18,13 +18,13 @@ interface ReminderState {
 }
 
 function Reminders() {
-  let remindersContext = useContext(RemindersContext);
-  let calendarContext = useContext(CalendarContext);
+  const remindersContext = useContext(RemindersContext);
+  const calendarContext = useContext(CalendarContext);
 
   const reminders = remindersContext.reminders;
   const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
-  let todayReminders: ReminderState[] = utils.filterRemindersByDay(
+  const todayReminders: ReminderState[] = utils.filterRemindersByDay(
     reminders,
     dateInfo.day,
     dateInfo,

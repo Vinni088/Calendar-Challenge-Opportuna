@@ -1,6 +1,22 @@
 import { ReminderState } from "../contexts/RemindersContext";
 
-export function filterRemindersByDay(reminderState: ReminderState[], dayNumber: number, dateInfo: any, monthReference: number) {
+interface DateInfoResult {
+    day: number,
+    dayFull: string,
+    month: number,
+    monthFull: string,
+    year: number,
+    currentTime: number,
+    weekDays: string[],
+    weekDaysFull: string[],
+    firstMonthDay: number,
+    firstMonthDayFull: string,
+    qtyDaysThisMonth: number,
+    qtyDaysPastMonth: number,
+    qtyDaysNextMonth: number,
+}
+
+export function filterRemindersByDay(reminderState: ReminderState[], dayNumber: number, dateInfo: DateInfoResult, monthReference: number) {
 
     const hasReminder = reminderState.filter(
         (item) =>

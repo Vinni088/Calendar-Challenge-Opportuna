@@ -26,7 +26,7 @@ export default function RemindersProvider({
   const [reminders, setReminders] = useState<ReminderState[]>([]);
 
   useEffect(() => {
-    let requestOptions: RequestInit = {
+    const requestOptions: RequestInit = {
       method: "GET",
     };
 

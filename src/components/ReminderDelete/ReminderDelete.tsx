@@ -14,7 +14,7 @@ interface ReminderState {
 }
 
 function ReminderDelete(props: { reminder: ReminderState }) {
-  let remindersContext = useContext(RemindersContext);
+  const remindersContext = useContext(RemindersContext);
 
   async function deleteConfirmation() {
     await swaal
@@ -54,7 +54,7 @@ function ReminderDelete(props: { reminder: ReminderState }) {
       .then((result) => {
         console.log(result);
 
-        let requestOptions2: RequestInit = {
+        const requestOptions2: RequestInit = {
           method: "GET",
         };
 

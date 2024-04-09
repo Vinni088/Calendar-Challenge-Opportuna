@@ -29,26 +29,41 @@ interface ReminderState {
   color: string;
 }
 
+interface DateInfoResult {
+  day: number;
+  dayFull: string;
+  month: number;
+  monthFull: string;
+  year: number;
+  currentTime: number;
+  weekDays: string[];
+  weekDaysFull: string[];
+  firstMonthDay: number;
+  firstMonthDayFull: string;
+  qtyDaysThisMonth: number;
+  qtyDaysPastMonth: number;
+  qtyDaysNextMonth: number;
+}
+
 const API_KEY = "2cddc023dd09005c1b277ed47e80342e";
 
-function formatDate(dateInfo: any) {
-  let dayString = String(dateInfo.day).padStart(2, "0");
-  let monthString = String(dateInfo.month).padStart(2, "0");
-  let yearString = String(dateInfo.year);
+function formatDate(dateInfo: DateInfoResult) {
+  const dayString = String(dateInfo.day).padStart(2, "0");
+  const monthString = String(dateInfo.month).padStart(2, "0");
+  const yearString = String(dateInfo.year);
 
-  let currentDate = `${yearString}-${monthString}-${dayString}`;
+  const currentDate = `${yearString}-${monthString}-${dayString}`;
 
   return currentDate;
 }
 
-
 const WeatherWidget = (props: { reminder: ReminderState }) => {
-  let calendarContext = useContext(CalendarContext);
+  const calendarContext = useContext(CalendarContext);
   const [weather, setWeather] = useState<WeatherData[]>([]);
-  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
+  const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   const reminder = props.reminder;
-  let currentDate = formatDate(dateInfo);
+  const currentDate = formatDate(dateInfo);
 
   const intervalOfDays = [currentDate];
 
@@ -68,7 +83,7 @@ const WeatherWidget = (props: { reminder: ReminderState }) => {
           );
 
           //Array in the case the forecast doesn't include the date
-          let correctionArr = [data.list[0]];
+          const correctionArr = [data.list[0]];
 
           currentDateData.length === 0
             ? setWeather(correctionArr)
@@ -87,7 +102,7 @@ const WeatherWidget = (props: { reminder: ReminderState }) => {
     if (currentDate <= reminder.date && intervalOfDays.length <= 6) {
       getWeather();
     }
-  }, [ calendarContext.selectedDate ]);
+  });
 
   if (currentDate <= reminder.date) {
     if (intervalOfDays.length <= 6) {

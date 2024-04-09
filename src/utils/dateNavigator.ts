@@ -5,13 +5,13 @@ export function dateNavigator(day: number, month: number, year: number) {
         year
     );
     
-    let dayString = String(day).padStart(2, "0");
+    const dayString = String(day).padStart(2, "0");
 
-    let monthString = String(month).padStart(2, "0");
+    const monthString = String(month).padStart(2, "0");
 
-    let yearString = String(year);
+    const yearString = String(year);
 
-    let newDate = new Date(`${yearString}-${monthString}-${dayString}T15:00:00Z`);
+    const newDate = new Date(`${yearString}-${monthString}-${dayString}T15:00:00Z`);
 
     //console.log(newDate);
 

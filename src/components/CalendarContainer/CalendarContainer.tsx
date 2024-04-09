@@ -5,13 +5,13 @@ import { CalendarContext } from "../../contexts/CalendarContext";
 import utils from "../../utils/index";
 
 function Calendar() {
-  let remindersContext = useContext(RemindersContext);
-  let calendarContext = useContext(CalendarContext);
+  const remindersContext = useContext(RemindersContext);
+  const calendarContext = useContext(CalendarContext);
 
-  let setCalendarDate = calendarContext.setSelectedDate;
+  const setCalendarDate = calendarContext.setSelectedDate;
 
-  let reminders = remindersContext.reminders;
-  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
+  const reminders = remindersContext.reminders;
+  const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   const daysOfPrevMonth = Array.from(
     { length: dateInfo.firstMonthDay },

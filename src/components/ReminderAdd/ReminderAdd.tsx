@@ -16,9 +16,9 @@ export interface ReminderState {
 }
 
 function ReminderAdd() {
-  let calendarContext = useContext(CalendarContext);
-  let remindersContext = useContext(RemindersContext);
-  let dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
+  const calendarContext = useContext(CalendarContext);
+  const remindersContext = useContext(RemindersContext);
+  const dateInfo = utils.getInfoData(calendarContext.selectedDate.date);
 
   const [reminderAddPopUp, setReminderAddPopUp] = useState(false);
   const [description, setDescription] = useState("");
@@ -27,12 +27,12 @@ function ReminderAdd() {
   const [city, setCity] = useState("");
   const [time, setTime] = useState("");
 
-  let dateString = `${dateInfo.year}-${String(dateInfo.month).padStart(
+  const dateString = `${dateInfo.year}-${String(dateInfo.month).padStart(
     2,
     "0"
   )}-${String(dateInfo.day).padStart(2, "0")}`;
 
-  let reminderObject = {
+  const reminderObject = {
     title,
     description,
     city,
@@ -41,7 +41,7 @@ function ReminderAdd() {
     color: colorValue,
   };
 
-  async function handleSubmit(e: any) {
+  async function handleSubmit(e: React.MouseEvent) {
     e.preventDefault();
 
     console.log(reminderObject);
@@ -105,9 +105,9 @@ function ReminderAdd() {
   }
 
   function closeAddReminderModal() {
-    clearInputs()
+    clearInputs();
 
-    setReminderAddPopUp(!reminderAddPopUp)
+    setReminderAddPopUp(!reminderAddPopUp);
   }
 
   return (
