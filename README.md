@@ -28,8 +28,8 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 
 ### Bônus
 
-- [ ] Funcionalidade de deletar todos os lembretes de um dia;
-- [ ] Criar migration na API para a tabela do BD;
+- [X] Funcionalidade de deletar todos os lembretes de um dia;
+- [X] Criar migration na API para a tabela do BD;
 
 ```bash
 # Para rodar a aplicação, com Yarn instalado, execute os comandos abaixo:

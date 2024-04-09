@@ -33,7 +33,7 @@ function ReminderDelete(props: { reminder: ReminderState }) {
 
           await swaal.fire({
             title: "Deleted!",
-            text: "Your file has been deleted.",
+            text: "Your reminder has been deleted.",
             icon: "success",
           });
         }
