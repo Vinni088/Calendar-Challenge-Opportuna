@@ -18,7 +18,8 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 - [X] Mostrar os lembretes na ordem correta (Dias corretos e horários corretos) ;
 - [X] Permitir a navegação do calendário por outros dias, meses, anos;
 - [X] Poder editar o lembrete com os dados de (Título, Descrição, Dia, Horário e cidade e cor);
-- [ ] Teste unitário da funcionalidade de criar novo lembrete e buscar informações de clima da data e horário dos lembretes com base na cidade;
+- [X] Teste unitário das funcionalidades de criar novo lembrete
+- [ ] Teste unitário das informações de clima da data e horário dos lembretes com base na cidade;
 
 ### Regras técnicas
 
@@ -27,8 +28,8 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 
 ### Bônus
 
-- Funcionalidade de deletar todos os lembretes de um dia;
-- Criar migration na API para a tabela do BD;
+- [ ] Funcionalidade de deletar todos os lembretes de um dia;
+- [ ] Criar migration na API para a tabela do BD;
 
 ```bash
 # Para rodar a aplicação, com Yarn instalado, execute os comandos abaixo:

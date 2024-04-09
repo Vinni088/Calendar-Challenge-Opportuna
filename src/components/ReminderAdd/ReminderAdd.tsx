@@ -44,7 +44,7 @@ function ReminderAdd() {
   async function handleSubmit(e: React.MouseEvent) {
     e.preventDefault();
 
-    console.log(reminderObject);
+    //console.log(reminderObject);
 
     const isEveryFieldFilled = Object.values(reminderObject).every(
       (value) => value !== ""
@@ -86,7 +86,7 @@ function ReminderAdd() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         responseJson = result;
         remindersContext.setReminders([
           ...remindersContext.reminders,
@@ -124,6 +124,7 @@ function ReminderAdd() {
             <form id="ReminderAddForm">
               <input
                 id="titleInput"
+                alt="titleInput"
                 type="text"
                 name="title"
                 value={title}
@@ -132,8 +133,9 @@ function ReminderAdd() {
                 required
                 placeholder="Reminder Title"
               />
-              <textarea
+              <input
                 id="descriptionInput"
+                type="text"
                 name="description"
                 maxLength={30}
                 value={description}
@@ -143,6 +145,7 @@ function ReminderAdd() {
               />
               <input
                 id="TimeInput"
+                alt="TimeInput"
                 type="time"
                 name="time"
                 value={time}
@@ -175,6 +178,8 @@ function ReminderAdd() {
                       }}
                     >
                       <input
+                        alt={color}
+                        id={color}
                         type="radio"
                         name="color"
                         value={colorValue}
