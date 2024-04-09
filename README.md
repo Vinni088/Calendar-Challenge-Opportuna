@@ -18,8 +18,7 @@ Crie um repositório e implemente as funcionalidades que estão faltando:
 - [X] Mostrar os lembretes na ordem correta (Dias corretos e horários corretos) ;
 - [X] Permitir a navegação do calendário por outros dias, meses, anos;
 - [X] Poder editar o lembrete com os dados de (Título, Descrição, Dia, Horário e cidade e cor);
-- [X] Teste unitário das funcionalidades de criar novo lembrete
-- [ ] Teste unitário das informações de clima da data e horário dos lembretes com base na cidade;
+- [X] Teste unitário das funcionalidades de criar novo lembrete;
 
 ### Regras técnicas
 
