@@ -1,12 +1,87 @@
-import {render,  screen, fireEvent, cleanup, act} from "@testing-library/react";
-import RemindersProvider, { ReminderState } from "../../contexts/RemindersContext";
+import {
+  render,
+  screen,
+  fireEvent,
+  cleanup,
+  act,
+} from "@testing-library/react";
+import RemindersProvider, {
+  ReminderState,
+} from "../../contexts/RemindersContext";
 import CalendarProvider from "../../contexts/CalendarContext";
 import { describe, expect, vi } from "vitest";
 import ReminderAdd from "./ReminderAdd";
 
-global.fetch = vi.fn();
+const mockReminders: ReminderState[] = [
+  {
+    id: 1,
+    date: "2024-04-04",
+    time: "09:00",
+    title: "Exercício",
+    description: "Fazer exercícios físicos",
+    city: "São Paulo",
+    color: "blue",
+  },
+  {
+    id: 2,
+    date: "2024-04-05",
+    time: "15:30",
+    title: "Reunião",
+    description: "Reunião de equipe",
+    city: "Rio de Janeiro",
+    color: "green",
+  },
+  {
+    id: 3,
+    date: "2024-04-06",
+    time: "18:00",
+    title: "Compras",
+    description: "Comprar mantimentos",
+    city: "Belo Horizonte",
+    color: "orange",
+  },
+  {
+    id: 4,
+    date: "2024-04-07",
+    time: "10:00",
+    title: "Dentista",
+    description: "Consulta com o dentista",
+    city: "Porto Alegre",
+    color: "red",
+  },
+  {
+    id: 5,
+    date: "2024-04-08",
+    time: "14:00",
+    title: "Aniversário",
+    description: "Festa de aniversário",
+    city: "Curitiba",
+    color: "pink",
+  },
+  {
+    id: 6,
+    date: "2024-04-09",
+    time: "21:00",
+    title: "Malhar",
+    description: "Treinar costas e biceps",
+    city: "Brasília",
+    color: "blue",
+  },
+];
 
-window.scrollTo = vi.fn();
+const mockData: ReminderState = {
+  id: 167,
+  title: "Malhar",
+  description: "Treinar costas e bíceps",
+  city: "brasília",
+  color: "yellow",
+  date: "2024-04-09",
+  time: "21:00",
+};
+
+(global.fetch as any) = vi.fn();
+
+(window.scrollTo as any) = vi.fn();
 
 function createFetchResponse(data: any) {
   return { json: () => new Promise((resolve) => resolve(data)) };
@@ -28,75 +103,8 @@ describe("Reminder add test", () => {
     );
   };
 
-  const mockReminders: ReminderState[] = [
-    {
-      id: 1,
-      date: "2024-04-04",
-      time: "09:00",
-      title: "Exercício",
-      description: "Fazer exercícios físicos",
-      city: "São Paulo",
-      color: "blue",
-    },
-    {
-      id: 2,
-      date: "2024-04-05",
-      time: "15:30",
-      title: "Reunião",
-      description: "Reunião de equipe",
-      city: "Rio de Janeiro",
-      color: "green",
-    },
-    {
-      id: 3,
-      date: "2024-04-06",
-      time: "18:00",
-      title: "Compras",
-      description: "Comprar mantimentos",
-      city: "Belo Horizonte",
-      color: "orange",
-    },
-    {
-      id: 4,
-      date: "2024-04-07",
-      time: "10:00",
-      title: "Dentista",
-      description: "Consulta com o dentista",
-      city: "Porto Alegre",
-      color: "red",
-    },
-    {
-      id: 5,
-      date: "2024-04-08",
-      time: "14:00",
-      title: "Aniversário",
-      description: "Festa de aniversário",
-      city: "Curitiba",
-      color: "pink",
-    },
-    {
-      id: 6,
-      date: "2024-04-09",
-      time: "21:00",
-      title: "Malhar",
-      description: "Treinar costas e biceps",
-      city: "Brasília",
-      color: "blue",
-    },
-  ];
-
-  const mockData: ReminderState = {
-    id: 167,
-    title: "Malhar",
-    description: "Treinar costas e bíceps",
-    city: "brasília",
-    color: "yellow",
-    date: "2024-04-09",
-    time: "21:00",
-  };
-
   it("should display the add reminder button", async () => {
-    fetch.mockResolvedValueOnce(createFetchResponse(mockReminders));
+    (fetch as any).mockResolvedValueOnce(createFetchResponse(mockReminders));
 
     RenderReminderAdd();
 
@@ -104,7 +112,7 @@ describe("Reminder add test", () => {
   });
 
   it("should display the form", async () => {
-    fetch.mockResolvedValueOnce(createFetchResponse(mockReminders));
+    (fetch as any).mockResolvedValueOnce(createFetchResponse(mockReminders));
 
     RenderReminderAdd();
 
@@ -124,7 +132,7 @@ describe("Reminder add test", () => {
   });
 
   it("should close the form", async () => {
-    fetch.mockResolvedValueOnce(createFetchResponse(mockReminders));
+    (fetch as any).mockResolvedValueOnce(createFetchResponse(mockReminders));
 
     RenderReminderAdd();
 
@@ -151,7 +159,7 @@ describe("Reminder add test", () => {
       fireEvent.click(colorInput[0]);
     });
 
-    fetch.mockResolvedValueOnce(createFetchResponse(mockData));
+    (fetch as any).mockResolvedValueOnce(createFetchResponse(mockData));
 
     const confirmButton = screen.getByText(/confirm/i);
 
