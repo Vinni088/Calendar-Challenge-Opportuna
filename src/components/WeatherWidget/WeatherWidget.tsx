@@ -102,7 +102,7 @@ const WeatherWidget = (props: { reminder: ReminderState }) => {
     if (currentDate <= reminder.date && intervalOfDays.length <= 6) {
       getWeather();
     }
-  });
+  }, [calendarContext.selectedDate]);
 
   if (currentDate <= reminder.date) {
     if (intervalOfDays.length <= 6) {
