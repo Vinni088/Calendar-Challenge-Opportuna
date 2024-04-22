@@ -18,7 +18,7 @@ function Calendar() {
     (_, i) => dateInfo.qtyDaysPastMonth - i
   ).reverse();
 
-  const daysInMonth = Array.from({ length: 30 }, (_, i) => i + 1);
+  const daysInMonth = Array.from({ length: dateInfo.qtyDaysThisMonth }, (_, i) => i + 1);
 
   const daysOfNextMonth = Array.from(
     { length: 33 - dateInfo.qtyDaysThisMonth + dateInfo.firstMonthDay },

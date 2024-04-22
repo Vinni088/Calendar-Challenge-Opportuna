@@ -26,7 +26,7 @@ function MonthSelect() {
         </button>
       </div>
 
-      <div className="CalendarMonth"> {dateInfo.monthFull} </div>
+      <div className="CalendarMonth"> {dateInfo.monthFull} {dateInfo.year}  </div>
 
       <div className="AddMonthsContainer">
         <button
